@@ -6,3 +6,10 @@ jobs:
     steps:
       - checkout
       - run: echo "hello world"
+  deploy:
+      - checkout
+workflows:
+  version: 2
+  sample:
+    - build
+    - deploy
