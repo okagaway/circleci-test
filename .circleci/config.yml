@@ -6,10 +6,15 @@ jobs:
     steps:
       - checkout
       - run: echo "hello world"
-#  deploy:
-#      - checkout
-#workflows:
-#  version: 2
-#  sample:
-#    - build
-#    - deploy
+  deploy:
+    docker:
+      - image: circleci/php:7.1-cli-stretch-node-browsers
+    steps:
+      - checkout
+      - run: echo "hello world"
+workflows:
+  version: 2
+  sample:
+    jobs:
+      - build
+      - deploy
