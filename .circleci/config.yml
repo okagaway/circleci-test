@@ -17,6 +17,11 @@ workflows:
   sample:
     jobs:
       - build
+      - HOLD-FRONT-BUILD: # ボタン押したら実行。
+          type: approval
+          filters:
+            branches:
+              ignore: master # masterにpushさせるのは微妙なのでやらない
       - deploy:
           requires:
             - build
